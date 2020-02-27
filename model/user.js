@@ -43,6 +43,9 @@ const UserSchema = new Schema({
       devices_code: {
         type: String
       },
+      device_type: {
+        type: String
+      },
       devices_registration_date: {
         type: Date
       },

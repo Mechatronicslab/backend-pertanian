@@ -8,7 +8,7 @@ router.post('/register', (req, res) => {
 })
 
 router.post('/aktivasi/:id', (req, res) => {
-  deviceController.aktivasiDevice(req.body.macAddress, req.params.id)
+  deviceController.aktivasiDevice(req.body, req.params.id)
     .then(result => res.json(result))
     .catch(err => res.json(err))
 })

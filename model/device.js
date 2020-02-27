@@ -1,14 +1,14 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-const UserSchema = new Schema({
+const DeviceSchema = new Schema({
   devices_mac_address: {
     type: String
   },
   devices_name: {
     type: String
   },
-  devices_code: {
+  device_type: {
     type: String
   },
   devices_registration_date: {
@@ -17,4 +17,4 @@ const UserSchema = new Schema({
   }
 })
 
-module.exports = mongoose.model('croot', UserSchema)
+module.exports = mongoose.model('croot', DeviceSchema)
