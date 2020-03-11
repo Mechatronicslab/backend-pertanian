@@ -47,3 +47,24 @@ exports.aktivasiDevice = (data, userId) =>
       }
     })
   })
+
+exports.tambahZona = (data) =>
+  new Promise((resolve, reject) => {
+    userModel.updateOne({
+      email: data.email,
+      "devices.mac": data.mac
+    },
+    {
+      $push: {
+        "devices.$.zona": {
+                zona_name: data.zona_name,
+                zona_number: data.zona_number,
+                jadwal: []
+              }
+      }
+    }).then(() => {
+      resolve(response.suksesResponse('Berhasil Nambah Zona'))
+    }).catch(() => {
+      reject(response.errorResponse('Gagal Menambah Zona'))
+    })
+  })

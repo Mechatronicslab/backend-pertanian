@@ -13,5 +13,11 @@ router.post('/aktivasi/:id', (req, res) => {
     .catch(err => res.json(err))
 })
 
+router.post('/tambahzona', (req, res) => {
+  deviceController.tambahZona(req.body)
+    .then(result => res.json(result))
+    .catch(err => res.json(err))
+})
+
 
 module.exports = router
