@@ -68,3 +68,26 @@ exports.tambahZona = (data) =>
       reject(response.errorResponse('Gagal Menambah Zona'))
     })
   })
+
+exports.getZonaByDevices = (data) =>
+  new Promise((resolve, reject) => {
+    userModel.findOne({
+      email: data.email,
+      "devices.mac": data.mac 
+    },
+    {
+      'devices.zone.$': 1
+    }).then((result) => {
+      if (result) {
+        if (result.devices.length < 1) {
+          reject(response.nullResult())
+        } else {
+          resolve(response.suksesResult(result.devices[0].zona))
+        }
+      } else {
+        reject(response.nullResult())
+      }
+    }).catch(() => {
+      reject(response.errorResult())
+    })
+  })

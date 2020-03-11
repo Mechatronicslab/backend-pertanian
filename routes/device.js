@@ -19,5 +19,11 @@ router.post('/tambahzona', (req, res) => {
     .catch(err => res.json(err))
 })
 
+router.get('/getzonabydevices', (req, res) => {
+  deviceController.getZonaByDevices(req.body)
+    .then(result => res.json(result))
+    .catch(err => res.json(err))
+})
+
 
 module.exports = router
